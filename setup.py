@@ -1,27 +1,21 @@
-from setuptools import find_packages,setup
-from typing import List
+import setuptools
 
-HYPEN_E_DOT='-e .'
-def get_requirements(file_path:str)->List[str]:
-    '''
-    this function will return the list of requirements
-    '''
-    requirements=[]
-    with open(file_path) as file_obj:
-        requirements=file_obj.readlines()
-        requirements=[req.replace("\n","") for req in requirements]
+__version__ = "0.0.0"
 
-        if HYPEN_E_DOT in requirements:
-            requirements.remove(HYPEN_E_DOT)
-    
-    return requirements
-
-setup(
-name='mlproject',
-version='0.0.1',
-author='karim hazem',
-author_email='karimhazem321@gmail.com',
-packages=find_packages(),
-install_requires=get_requirements('requirements.txt')
-
+REPO_NAME = "Students-Performance-in-Exams_Public"
+AUTHOR_USER_NAME = "karim hazem"
+AUTHOR_EMAIL = "karimhazem321@gmail.com"
+SRC_REPO = 'Students-Performance-in-Exams_Public'
+setuptools.setup(
+    name=SRC_REPO,
+    version=__version__,
+    author=AUTHOR_USER_NAME,
+    author_email=AUTHOR_EMAIL,
+    long_description_content="text/markdown",
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
+    project_urls={
+        "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
+    },
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src")
 )
